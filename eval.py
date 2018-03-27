@@ -19,7 +19,7 @@ tf.flags.DEFINE_string("negative_data_file", "./data/negative_examples.txt", "Da
 
 # Eval Parameters
 tf.flags.DEFINE_integer("batch_size", 64, "Batch Size (default: 64)")
-tf.flags.DEFINE_string("checkpoint_dir", "runs/test/", "Checkpoint directory from training run")
+tf.flags.DEFINE_string("checkpoint_dir", "./runs/test/", "Checkpoint directory from training run")
 tf.flags.DEFINE_boolean("eval_train", False, "Evaluate on all training data")
 
 # Misc Parameters
@@ -60,6 +60,7 @@ with graph.as_default():
     sess = tf.Session(config=session_conf)
     with sess.as_default():
         # Load the saved meta graph and restore variables
+        print("{}.meta".format(checkpoint_file))
         saver = tf.train.import_meta_graph("{}.meta".format(checkpoint_file))
         saver.restore(sess, checkpoint_file)
 
