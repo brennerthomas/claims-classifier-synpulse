@@ -34,7 +34,7 @@ tf.flags.DEFINE_integer("num_checkpoints", 5, "Number of checkpoints to store (d
 tf.flags.DEFINE_boolean("allow_soft_placement", True, "Allow device soft device placement")
 tf.flags.DEFINE_boolean("log_device_placement", False, "Log placement of ops on devices")
 
-tf.flags.DEFINE_string("tester", "", "Test String)
+tf.flags.DEFINE_string("tester", "", "Test String")
 
 FLAGS = tf.flags.FLAGS
 print("\nParameters:")
