@@ -8,6 +8,7 @@ import datetime
 import data_helpers
 from text_cnn import TextCNN
 from tensorflow.contrib import learn
+from sys import argv
 
 # Parameters
 # ==================================================
@@ -37,6 +38,7 @@ tf.flags.DEFINE_boolean("log_device_placement", False, "Log placement of ops on 
 tf.flags.DEFINE_string("tester", "", "Test String")
 
 FLAGS = tf.flags.FLAGS
+FLAGS(sys.argv)
 print("\nParameters:")
 for attr, value in sorted(FLAGS.__flags.items()):
     print("{}={}".format(attr.upper(), value))
