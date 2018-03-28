@@ -9,7 +9,7 @@ import data_helpers
 from text_cnn import TextCNN
 from tensorflow.contrib import learn
 import csv
-from sys import argv
+import sys
 
 # Parameters
 # ==================================================
@@ -20,14 +20,12 @@ tf.flags.DEFINE_string("negative_data_file", "./data/negative_examples.txt", "Da
 
 # Eval Parameters
 tf.flags.DEFINE_integer("batch_size", 64, "Batch Size (default: 64)")
-#tf.flags.DEFINE_string("checkpoint_dir", "./runs/test/", "Checkpoint directory from training run")
+tf.flags.DEFINE_string("checkpoint_dir", "", "Checkpoint directory from training run")
 tf.flags.DEFINE_boolean("eval_train", False, "Evaluate on all training data")
 
 # Misc Parameters
 tf.flags.DEFINE_boolean("allow_soft_placement", True, "Allow device soft device placement")
 tf.flags.DEFINE_boolean("log_device_placement", False, "Log placement of ops on devices")
-
-checkpoint_dir = "./runs/test/"
 
 FLAGS = tf.flags.FLAGS
 FLAGS(sys.argv)
@@ -54,6 +52,7 @@ print("\nEvaluating...\n")
 # Evaluation
 # ==================================================
 checkpoint_file = tf.train.latest_checkpoint(checkpoint_dir)
+print("Checkpoint File: {}".format(checkpoint_file))
 graph = tf.Graph()
 with graph.as_default():
     session_conf = tf.ConfigProto(
