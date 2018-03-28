@@ -9,6 +9,7 @@ import data_helpers
 from text_cnn import TextCNN
 from tensorflow.contrib import learn
 import csv
+from sys import argv
 
 # Parameters
 # ==================================================
@@ -29,7 +30,7 @@ tf.flags.DEFINE_boolean("log_device_placement", False, "Log placement of ops on 
 checkpoint_dir = "./runs/test/"
 
 FLAGS = tf.flags.FLAGS
-
+FLAGS(sys.argv)
 print("\nParameters:")
 for attr, value in sorted(FLAGS.__flags.items()):
     print("{}={}".format(attr.upper(), value))
