@@ -110,8 +110,8 @@ with tf.Graph().as_default():
 
         # Output directory for models and summaries
         timestamp = str(int(time.time()))
-        #out_dir = os.path.abspath(os.path.join(os.path.curdir, "runs", timestamp))
-        out_dir = os.path.abspath(os.path.join(os.path.curdir, "runs", "test"))
+        out_dir = os.path.abspath(os.path.join(os.path.curdir, "runs", timestamp))
+        #out_dir = os.path.abspath(os.path.join(os.path.curdir, "runs", "test"))
         print("Writing to {}\n".format(out_dir))
 
         # Summaries for loss and accuracy
