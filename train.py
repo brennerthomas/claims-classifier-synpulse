@@ -18,6 +18,9 @@ tf.flags.DEFINE_float("dev_sample_percentage", .1, "Percentage of the training d
 tf.flags.DEFINE_string("positive_data_file", "./data/positive_examples.txt", "Data source for the positive data.")
 tf.flags.DEFINE_string("negative_data_file", "./data/negative_examples.txt", "Data source for the negative data.")
 
+# this is a tester
+
+
 # Model Hyperparameters
 tf.flags.DEFINE_integer("embedding_dim", 128, "Dimensionality of character embedding (default: 128)")
 tf.flags.DEFINE_string("filter_sizes", "3,4,5", "Comma-separated filter sizes (default: '3,4,5')")
