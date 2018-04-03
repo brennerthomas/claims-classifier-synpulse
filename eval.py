@@ -51,7 +51,7 @@ print("\nEvaluating...\n")
 
 # Evaluation
 # ==================================================
-checkpoint_file = tf.train.latest_checkpoint(FLAGS.checkpoint_dir)
+checkpoint_file = tf.train.latest_checkpoint("{}{}".format(FLAGS.checkpoint_dir, "checkpoint")
 graph = tf.Graph()
 with graph.as_default():
     session_conf = tf.ConfigProto(
