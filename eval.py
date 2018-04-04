@@ -22,6 +22,7 @@ tf.flags.DEFINE_string("negative_data_file", "./data/negative_examples.txt", "Da
 tf.flags.DEFINE_integer("batch_size", 64, "Batch Size (default: 64)")
 tf.flags.DEFINE_string("checkpoint_dir", "", "Checkpoint directory from training run")
 tf.flags.DEFINE_boolean("eval_train", False, "Evaluate on all training data")
+tf.flags.DEFINE_string("model", "100", "Enter the number of the model to evaluate (in 100 steps, default: 100)")
 
 # Misc Parameters
 tf.flags.DEFINE_boolean("allow_soft_placement", True, "Allow device soft device placement")
@@ -51,7 +52,8 @@ print("\nEvaluating...\n")
 
 # Evaluation
 # ==================================================
-checkpoint_file = tf.train.latest_checkpoint("{}{}".format(FLAGS.checkpoint_dir, "checkpoint")
+checkpoint_file = tf.train.latest_checkpoint("{}/checkpoints/model-{}00.meta".format(FLAGS.checkpoint_dir, FLAGS.model)
+print("Checkpoint file: {}".format(checkpoint_file))
 graph = tf.Graph()
 with graph.as_default():
     session_conf = tf.ConfigProto(
