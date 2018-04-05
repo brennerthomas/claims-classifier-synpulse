@@ -52,8 +52,7 @@ print("\nEvaluating...\n")
 
 # Evaluation
 # ==================================================
-checkpoint_file = tf.train.latest_checkpoint("{}/checkpoints/model-{}00.meta".format(FLAGS.checkpoint_dir, FLAGS.model)
-print("Checkpoint file: {}".format(checkpoint_file))
+checkpoint_file = tf.train.latest_checkpoint("{}/checkpoints/model-{}00".format(FLAGS.checkpoint_dir, FLAGS.model))
 graph = tf.Graph()
 with graph.as_default():
     session_conf = tf.ConfigProto(
@@ -62,8 +61,7 @@ with graph.as_default():
     sess = tf.Session(config=session_conf)
     with sess.as_default():
         # Load the saved meta graph and restore variables
-        saver = tf.train.import_meta_graph("{}".format(FLAGS.checkpoint_file))
-        saver = tf.train.import_meta_graph("{}.meta".format(FLAGS.checkpoint_file))
+        saver = tf.train.import_meta_graph("{}.meta".format(checkpoint_file))
         saver.restore(sess, FLAGS.checkpoint_file)
 
         # Get the placeholders from the graph by name
