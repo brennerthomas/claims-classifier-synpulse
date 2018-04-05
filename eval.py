@@ -20,7 +20,7 @@ tf.flags.DEFINE_string("negative_data_file", "./data/negative_examples.txt", "Da
 
 # Eval Parameters
 tf.flags.DEFINE_integer("batch_size", 64, "Batch Size (default: 64)")
-tf.flags.DEFINE_string("checkpoint_dir", "", "Checkpoint directory from training run")
+tf.flags.DEFINE_string("checkpoint_dir", " ", "Checkpoint directory from training run")
 tf.flags.DEFINE_boolean("eval_train", False, "Evaluate on all training data")
 tf.flags.DEFINE_string("model", "100", "Enter the number of the model to evaluate (in 100 steps, default: 100)")
 
@@ -52,7 +52,7 @@ print("\nEvaluating...\n")
 
 # Evaluation
 # ==================================================
-checkpoint_file = tf.train.latest_checkpoint("{}/checkpoints/model-{}00".format(FLAGS.checkpoint_dir, FLAGS.model))
+checkpoint_file = "{}/checkpoints/model-{}00".format(FLAGS.checkpoint_dir, FLAGS.model)
 graph = tf.Graph()
 with graph.as_default():
     session_conf = tf.ConfigProto(
@@ -62,7 +62,7 @@ with graph.as_default():
     with sess.as_default():
         # Load the saved meta graph and restore variables
         saver = tf.train.import_meta_graph("{}.meta".format(checkpoint_file))
-        saver.restore(sess, FLAGS.checkpoint_file)
+        saver.restore(sess, checkpoint_file)
 
         # Get the placeholders from the graph by name
         input_x = graph.get_operation_by_name("input_x").outputs[0]
@@ -90,7 +90,7 @@ if y_test is not None:
 
 # Save the evaluation to a csv
 predictions_human_readable = np.column_stack((np.array(x_raw), all_predictions))
-out_path = os.path.join(FLAGS.checkpoint_dir, "..", "prediction.csv")
+out_path = FLAGS.checkpoint_dir + "/prediction.csv"
 print("Saving evaluation to {0}".format(out_path))
-with open(out_path, 'w') as f:
+with open(out_path, 'w+') as f:
     csv.writer(f).writerows(predictions_human_readable)
