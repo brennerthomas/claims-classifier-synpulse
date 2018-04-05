@@ -15,8 +15,8 @@ import sys
 # ==================================================
 
 # Data Parameters
-tf.flags.DEFINE_string("positive_data_file", "./data/positive_examples.txt", "Data source for the positive data.")
-tf.flags.DEFINE_string("negative_data_file", "./data/negative_examples.txt", "Data source for the negative data.")
+tf.flags.DEFINE_string("positive_data_file", "./data/positive_eval_examples.txt", "Eval Data source for the positive data.")
+tf.flags.DEFINE_string("negative_data_file", "./data/negative_eval_examples.txt", "Eval Data source for the negative data.")
 
 # Eval Parameters
 tf.flags.DEFINE_integer("batch_size", 64, "Batch Size (default: 64)")
