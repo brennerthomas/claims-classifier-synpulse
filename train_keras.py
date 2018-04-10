@@ -17,7 +17,7 @@ import sys
 # ==================================================
 
 # Data loading params
-
+print("     ")
 
 tf.flags.DEFINE_float("dev_sample_percentage", .1, "Percentage of the training data to use for validation")
 tf.flags.DEFINE_string("positive_data_file", "./data/positive_examples.txt", "Data source for the positive data.")
